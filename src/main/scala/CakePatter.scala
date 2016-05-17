@@ -2,6 +2,7 @@ class User(val username: String, val password: String)
 
 trait UserRepositoryComponent {
   val userRepository: UserRepository
+
   class UserRepository {
     def authenticate(user: User): User = {
       println("authenticating user: " + user)
@@ -14,6 +15,7 @@ trait UserRepositoryComponent {
 
 trait UserServiceComponent { this: UserRepositoryComponent =>
   val userService: UserService
+
   class UserService {
     def authenticate(username: String, password: String): User =
       userRepository.authenticate(new User(username, password))
